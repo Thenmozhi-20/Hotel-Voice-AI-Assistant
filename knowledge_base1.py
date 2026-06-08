@@ -365,8 +365,6 @@ def prepare_documents():
 
     # ── 31. Location Intelligence ──────────────────────
     loc = h.get("location_intelligence", {})
-
-    # Hospitals, pharmacies, ATMs, groceries, petrol
     docs_and_ids.append((
         f"Nearest hospitals: {', '.join(loc.get('nearest_hospital', []))}. "
         f"Nearest pharmacies: {', '.join(loc.get('nearest_pharmacy', []))}. "
@@ -375,79 +373,6 @@ def prepare_documents():
         f"Nearest petrol stations: {', '.join(loc.get('nearest_petrol_bunk', []))}.",
         "location_intelligence"
     ))
-
-    # Metro stations
-    metro = loc.get("nearest_metro_stations", [])
-    if metro:
-        docs_and_ids.append((
-            f"Nearest metro stations from the hotel: {', '.join(metro)}. "
-            f"All stations are on the Purple Line of Namma Metro.",
-            "nearest_metro_stations"
-        ))
-
-    # Shopping areas and malls
-    shopping = loc.get("nearest_shopping", [])
-    if shopping:
-        docs_and_ids.append((
-            f"Nearby shopping areas and malls: {', '.join(shopping)}.",
-            "nearest_shopping"
-        ))
-
-    # Nearby restaurants and cafes
-    nearby_rest = loc.get("nearby_restaurants_cafes", [])
-    if nearby_rest:
-        docs_and_ids.append((
-            f"Nearby restaurants and cafes close to the hotel: {', '.join(nearby_rest)}.",
-            "nearby_restaurants_cafes"
-        ))
-
-    # Police stations
-    police = loc.get("nearest_police_station", [])
-    if police:
-        docs_and_ids.append((
-            f"Nearest police stations to the hotel: {', '.join(police)}.",
-            "nearest_police_station"
-        ))
-
-    # Safety at night
-    safe_night = loc.get("safe_at_night", [])
-    if safe_night:
-        docs_and_ids.append((
-            f"Safety at night around the hotel: {', '.join(safe_night)}.",
-            "safe_at_night"
-        ))
-
-    # Railway stations
-    railway = loc.get("railway_station_distance_km", [])
-    if railway:
-        docs_and_ids.append((
-            f"Nearest railway stations: {', '.join(railway)}.",
-            "nearest_railway_stations"
-        ))
-
-    # Landmarks
-    landmarks = loc.get("nearby_landmarks", [])
-    if landmarks:
-        docs_and_ids.append((
-            f"Nearby landmarks and attractions: {', '.join(landmarks)}.",
-            "nearby_landmarks"
-        ))
-
-    # Airport travel time
-    airport_time = loc.get("airport_travel_time_minutes", [])
-    if airport_time:
-        docs_and_ids.append((
-            f"Travel time to Kempegowda International Airport: {', '.join(airport_time)}.",
-            "airport_travel_time"
-        ))
-
-    # Cab accessibility
-    cab = loc.get("cab_accessibility", [])
-    if cab:
-        docs_and_ids.append((
-            f"Cab and auto availability near the hotel: {', '.join(cab)}.",
-            "cab_accessibility"
-        ))
 
     # ── 32. Room Specifications ────────────────────────
     specs = h.get("room_specs", {})
